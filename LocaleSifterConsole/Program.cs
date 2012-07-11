@@ -43,9 +43,23 @@ namespace LocaleSifterConsole
             {
                 sb.AppendLine("\"" + missingItem + "\",\"" + localSifter.LocaleContent[english][missingItem] + "\"");
             }
-            TextWriter tw = new StreamWriter("output.csv");
-            tw.WriteLine(sb);
-            tw.Close();
+            //TextWriter tw = new StreamWriter("output.csv");
+            //tw.WriteLine(sb);
+            //tw.Close();
+            Console.ReadKey();
+            Console.WriteLine("==============================================");
+
+            Dictionary<string, List<string>> matchedValues = localSifter.MatchedValues();
+            foreach (var locale in matchedValues)
+            {
+                Console.WriteLine("MATCHED VALUES : " + locale.Key);
+                foreach (string matchedValue in locale.Value)
+                {
+                    Console.Write(matchedValue + ", ");
+                }
+            }
+            Console.WriteLine("============================================== MATCHED END");
+            Console.ReadKey();
         }
     }
 }
